@@ -1,4 +1,4 @@
-# SpinPick — Random Decisions, Made Beautiful
+# Wheeloname — Random Decisions, Made Beautiful
 
 A fast, elegant, and fully-featured spin wheel application for names, tasks, prizes, and decisions. Create beautiful wheels, spin with satisfying animations, and make fair random selections instantly.
 
