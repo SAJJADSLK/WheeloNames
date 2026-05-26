@@ -58,7 +58,7 @@ export default function WheelPage() {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const textareaRef = useRef<HTMLInputElement>(null);
 
-  const size = fullScreen ? 500 : 340;
+  const size = fullScreen ? 600 : 450;
   const cx = size / 2;
   const cy = size / 2;
   const outerR = size / 2 - 6;
