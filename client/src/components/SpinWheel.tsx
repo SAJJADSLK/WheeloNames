@@ -1,5 +1,5 @@
 /* =============================================================
-   SpinWheel Component — SpinPick Clone
+   SpinWheel Component — Wheeloname Clone
    FIXED: Corrected winner selection logic to ensure accurate results
    Renders a colorful segmented wheel with a white center and
    optional spin animation triggered by clicking the center button.

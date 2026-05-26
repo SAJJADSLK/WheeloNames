@@ -1,5 +1,5 @@
 /* =============================================================
-   Header — SpinPick Clone
+   Header — Wheeloname
    Sticky top nav with logo, links, and "New Wheel" CTA button
    ============================================================= */
 
@@ -22,20 +22,16 @@ export default function Header() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center shadow-md group-hover:shadow-purple-300 transition-shadow duration-200">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <circle cx="8" cy="8" r="3" fill="white" />
-                <path d="M8 1 A7 7 0 0 1 15 8" stroke="white" strokeWidth="2" strokeLinecap="round" fill="none" />
-                <path d="M15 8 A7 7 0 0 1 8 15" stroke="rgba(255,255,255,0.6)" strokeWidth="2" strokeLinecap="round" fill="none" />
-                <path d="M8 15 A7 7 0 0 1 1 8" stroke="rgba(255,255,255,0.4)" strokeWidth="2" strokeLinecap="round" fill="none" />
-                <path d="M1 8 A7 7 0 0 1 8 1" stroke="rgba(255,255,255,0.2)" strokeWidth="2" strokeLinecap="round" fill="none" />
-              </svg>
-            </div>
+            <img
+              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663675103243/Keu92i8at8VAdKDhSKgXT4/wheeloname-favicon-2wzufQWDpYBWNPmEntMmYz.webp"
+              alt="Wheeloname"
+              className="w-8 h-8 rounded-full shadow-md group-hover:shadow-purple-300 transition-shadow duration-200"
+            />
             <span
               className="text-lg font-bold text-gray-900"
               style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
             >
-              SpinPick
+              Wheeloname
             </span>
           </Link>
 

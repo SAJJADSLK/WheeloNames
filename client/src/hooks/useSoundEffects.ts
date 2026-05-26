@@ -1,5 +1,5 @@
 /* =============================================================
-   useSoundEffects Hook — SpinPick Clone
+   useSoundEffects Hook — Wheeloname Clone
    Manages sound effects preferences and playback
    ============================================================= */
 

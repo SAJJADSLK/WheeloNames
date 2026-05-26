@@ -1,5 +1,5 @@
 /* =============================================================
-   Weighted Selection Utility — SpinPick Clone
+   Weighted Selection Utility — Wheeloname Clone
    Implements weighted random selection for entries
    ============================================================= */
 

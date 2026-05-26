@@ -1,5 +1,5 @@
 /* =============================================================
-   Multi-Draw Utility — SpinPick Clone
+   Multi-Draw Utility — Wheeloname Clone
    Sequential winner selection without replacement
    ============================================================= */
 

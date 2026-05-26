@@ -1,5 +1,5 @@
 /* =============================================================
-   TeamsPage — SpinPick Clone
+   TeamsPage — Wheeloname Clone
    Team division and group assignment tool
    ============================================================= */
 

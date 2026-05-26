@@ -1,5 +1,5 @@
 /* =============================================================
-   WheelPage — SpinPick Clone
+   WheelPage — Wheeloname Clone
    Full interactive wheel spinner with advanced features
    - Local storage persistence
    - Custom themes

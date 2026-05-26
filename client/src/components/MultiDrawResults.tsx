@@ -1,5 +1,5 @@
 /* =============================================================
-   MultiDrawResults Component — SpinPick Clone
+   MultiDrawResults Component — Wheeloname Clone
    Display multi-draw results with animation
    ============================================================= */
 

@@ -1,5 +1,5 @@
 /* =============================================================
-   WeightedEntryEditor Component — SpinPick Clone
+   WeightedEntryEditor Component — Wheeloname Clone
    UI for editing entry weights and viewing probabilities
    ============================================================= */
 

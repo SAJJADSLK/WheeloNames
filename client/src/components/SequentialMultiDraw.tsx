@@ -1,5 +1,5 @@
 /* =============================================================
-   SequentialMultiDraw Component — SpinPick Clone
+   SequentialMultiDraw Component — Wheeloname Clone
    Displays multi-draw with sequential wheel animations
    ============================================================= */
 

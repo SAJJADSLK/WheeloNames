@@ -1,5 +1,5 @@
 /* =============================================================
-   useWeightedEntries Hook — SpinPick Clone
+   useWeightedEntries Hook — Wheeloname Clone
    Manages weighted entries with probability calculations
    ============================================================= */
 

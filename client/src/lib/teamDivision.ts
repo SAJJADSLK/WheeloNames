@@ -1,5 +1,5 @@
 /* =============================================================
-   Team Division Utility — SpinPick Clone
+   Team Division Utility — Wheeloname Clone
    Algorithms for dividing people into balanced teams
    ============================================================= */
 

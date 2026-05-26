@@ -1,5 +1,5 @@
 /* =============================================================
-   useWheelStorage Hook — SpinPick Clone
+   useWheelStorage Hook — Wheeloname Clone
    Manages local storage persistence for wheel configurations
    ============================================================= */
 

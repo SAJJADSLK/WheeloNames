@@ -1,5 +1,5 @@
 /* =============================================================
-   WheelPage — SpinPick Clone
+   WheelPage — Wheeloname Clone
    Full interactive wheel spinner with advanced features
    - Local storage persistence
    - Custom themes
@@ -39,7 +39,7 @@ function describeArc(cx: number, cy: number, r: number, start: number, end: numb
 }
 
 export default function WheelPage() {
-  const [entries, setEntries] = useState(["Alice", "Bob", "Carol", "David", "Eve", "Frank"]);
+  const [entries, setEntries] = useState<string[]>([]);
   const [newEntry, setNewEntry] = useState("");
   const [spinning, setSpinning] = useState(false);
   const [rotation, setRotation] = useState(0);
@@ -56,6 +56,7 @@ export default function WheelPage() {
   const { addWinner, getWheelHistory, getWinnerStats } = useWinnerHistory();
   const { soundEnabled, toggleSound, playSpinTicks, playFanfare } = useSoundEffects();
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const textareaRef = useRef<HTMLInputElement>(null);
 
   const size = fullScreen ? 500 : 340;
   const cx = size / 2;
@@ -134,10 +135,12 @@ export default function WheelPage() {
   };
 
   const resetWheel = () => {
-    setEntries(["Alice", "Bob", "Carol", "David", "Eve", "Frank"]);
+    setEntries([]);
+    setNewEntry("");
     setResult(null);
     setRotation(0);
     setShowCelebration(false);
+    toast.success("Wheel reset");
   };
 
   const shareWheel = () => {
@@ -461,25 +464,51 @@ export default function WheelPage() {
               <ThemeSelector onThemeSelect={handleThemeSelect} />
             </div>
 
-            {/* Add entry */}
-            <div className="flex gap-2 mb-5">
+            {/* Add entry - Wheelofnames style */}
+            <div className="mb-5">
               <input
+                ref={textareaRef}
+                type="text"
                 value={newEntry}
                 onChange={(e) => setNewEntry(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && addEntry()}
-                placeholder="Add an entry…"
-                className="flex-1 px-3.5 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent transition-all"
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.preventDefault();
+                    addEntry();
+                    textareaRef.current?.focus();
+                  }
+                }}
+                onPaste={(e) => {
+                  e.preventDefault();
+                  const text = e.clipboardData.getData("text");
+                  const lines = text.split("\n")
+                    .map(line => line.replace(/^\d+\.\s*/, "").trim())
+                    .filter(line => line.length > 0);
+                  
+                  if (lines.length === 0) return;
+                  
+                  if (lines.length === 1) {
+                    setNewEntry(lines[0]);
+                    toast.success("Pasted: " + lines[0]);
+                  } else {
+                    const newEntries = lines.filter(line => !entries.includes(line));
+                    setEntries(prev => [...prev, ...newEntries]);
+                    setNewEntry("");
+                    toast.success(`Added ${newEntries.length} entries`);
+                  }
+                }}
+                placeholder="Type an entry and press Enter (or paste multiple lines)"
+                className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-purple-400 transition-all font-medium"
               />
-              <button
-                onClick={addEntry}
-                className="px-4 py-2.5 rounded-xl bg-purple-600 text-white hover:bg-purple-700 transition-colors active:scale-95"
-              >
-                <Plus size={18} />
-              </button>
+              <p className="text-xs text-gray-500 mt-2 ml-1">💡 Press Enter to add • Paste multiple lines at once</p>
             </div>
 
-            {/* Entries list */}
-            <div className="space-y-2 max-h-48 overflow-y-auto mb-5">
+            {/* Entries list - Clean display */}
+            <div className="mb-5">
+              <div className="flex items-center justify-between mb-3">
+                <p className="text-xs font-semibold text-gray-600 uppercase tracking-wider">Entries ({entries.length})</p>
+              </div>
+              <div className="space-y-1.5 max-h-56 overflow-y-auto bg-gray-50 rounded-lg p-3 border border-gray-200">
               {entries.map((entry, idx) => (
                 <div key={idx} className="flex items-center justify-between px-3 py-2 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors group">
                   <span className="text-sm font-medium text-gray-700">{entry}</span>
@@ -491,6 +520,7 @@ export default function WheelPage() {
                   </button>
                 </div>
               ))}
+            </div>
             </div>
 
             {/* Action buttons */}

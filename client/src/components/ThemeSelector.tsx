@@ -1,5 +1,5 @@
 /* =============================================================
-   ThemeSelector Component — SpinPick Clone
+   ThemeSelector Component — Wheeloname Clone
    Allows users to select custom color themes for their wheels
    ============================================================= */
 

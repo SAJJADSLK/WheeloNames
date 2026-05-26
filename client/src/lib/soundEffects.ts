@@ -1,5 +1,5 @@
 /* =============================================================
-   Sound Effects Utility — SpinPick Clone
+   Sound Effects Utility — Wheeloname Clone
    Web Audio API implementation for spin wheel sounds
    - Tick sound during spin
    - Fanfare sound on winner reveal

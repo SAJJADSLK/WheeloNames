@@ -1,5 +1,5 @@
 /* =============================================================
-   Home Page — SpinPick Clone
+   Home Page — Wheeloname
    Design: Playful Precision — white bg, purple accent, clean typography
    SEO Optimized with AdSense placements
    ============================================================= */
@@ -111,7 +111,7 @@ export default function Home() {
             className="animate-fade-up animate-fade-up-delay-1 text-5xl sm:text-6xl font-extrabold text-gray-900 leading-tight mb-5"
             style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
           >
-            Random Decisions,
+            Spin the Wheel,
             <br />
             <span
               className="bg-clip-text text-transparent"
@@ -119,21 +119,20 @@ export default function Home() {
                 backgroundImage: "linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%)",
               }}
             >
-              Made Beautiful
+              Pick a Winner
             </span>
           </h1>
 
           {/* Subheadline */}
           <p className="animate-fade-up animate-fade-up-delay-2 text-lg text-gray-500 max-w-xl mx-auto mb-10 leading-relaxed">
-            SpinPick is a fast, elegant wheel spinner for names, tasks, prizes, and decisions.
-            Weighted draws, multi-winner raffles, sound effects — all in one place.
+            The free online spin wheel maker for classrooms, raffles, giveaways & decisions. Create custom wheels, pick random names, divide teams, and make fair decisions instantly.
           </p>
 
           {/* CTA Buttons */}
           <div className="animate-fade-up animate-fade-up-delay-3 flex flex-col sm:flex-row items-center justify-center gap-3 mb-14">
             <Link href="/wheel/new">
               <button className="flex items-center gap-2 px-7 py-3.5 rounded-xl text-base font-semibold text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 shadow-lg hover:shadow-purple-300 transition-all duration-200 active:scale-95">
-                Create a Wheel
+                Create Spin Wheel Now
                 <ArrowRight size={18} />
               </button>
             </Link>
@@ -200,7 +199,7 @@ export default function Home() {
             Perfect for Every Situation
           </h2>
           <p className="text-center text-gray-500 mb-12 max-w-2xl mx-auto">
-            Whether you're in a classroom, hosting a party, running a meeting, or organizing an event, SpinPick makes random selection easy and fun.
+            Whether you're in a classroom, hosting a party, running a meeting, or organizing an event, Wheeloname makes random selection easy and fun.
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
             {USE_CASES.map((uc) => (
@@ -285,8 +284,8 @@ export default function Home() {
           <div className="space-y-6">
             {[
               {
-                q: "Is SpinPick really free?",
-                a: "Yes! SpinPick is completely free with no hidden charges, no ads interrupting your spin, and no sign-up required.",
+                q: "Is Wheeloname really free?",
+                a: "Yes! Wheeloname is completely free with no hidden charges, no ads interrupting your spin, and no sign-up required.",
               },
               {
                 q: "Can I save my wheels?",
@@ -302,7 +301,7 @@ export default function Home() {
               },
               {
                 q: "Does it work on mobile?",
-                a: "Perfectly! SpinPick is fully responsive and works seamlessly on phones, tablets, and desktops.",
+                a: "Perfectly! Wheeloname is fully responsive and works seamlessly on phones, tablets, and desktops.",
               },
               {
                 q: "Can I export my data?",
@@ -366,7 +365,7 @@ export default function Home() {
                   className="text-sm font-bold text-gray-900"
                   style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                 >
-                  SpinPick
+                  Wheeloname
                 </span>
               </div>
               <p className="text-xs text-gray-500">Free forever. No account required.</p>
@@ -397,7 +396,7 @@ export default function Home() {
             </div>
           </div>
           <div className="border-t border-gray-100 pt-8 text-center text-xs text-gray-500">
-            <p>&copy; 2026 SpinPick. All rights reserved. Made with ❤️ for decision makers everywhere.</p>
+            <p>&copy; 2026 Wheeloname. All rights reserved. Made with ❤️ for decision makers everywhere.</p>
           </div>
         </div>
       </footer>

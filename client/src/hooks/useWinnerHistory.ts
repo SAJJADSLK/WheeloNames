@@ -1,5 +1,5 @@
 /* =============================================================
-   useWinnerHistory Hook — SpinPick Clone
+   useWinnerHistory Hook — Wheeloname Clone
    Tracks winner history for each wheel
    ============================================================= */
 

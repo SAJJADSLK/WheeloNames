@@ -1,5 +1,5 @@
 /* =============================================================
-   useMultiDraw Hook — SpinPick Clone
+   useMultiDraw Hook — Wheeloname Clone
    Manages multi-draw state and operations with animations
    ============================================================= */
 
