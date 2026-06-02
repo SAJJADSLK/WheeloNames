@@ -51,6 +51,10 @@ export default function WheelPage() {
   const [wheelColors, setWheelColors] = useState(DEFAULT_COLORS);
   const [showCelebration, setShowCelebration] = useState(false);
   const [wheelId] = useState(() => new URLSearchParams(window.location.search).get("wheel") || `wheel_${Date.now()}`);
+  const [shareLink, setShareLink] = useState<string | null>(null);
+  const [showShareModal, setShowShareModal] = useState(false);
+  const [removeWinnerMode, setRemoveWinnerMode] = useState(false);
+  const [selectedWinners, setSelectedWinners] = useState<Set<string>>(new Set());
   
   const { saveWheel, updateWheel, getWheel } = useWheelStorage();
   const { addWinner, getWheelHistory, getWinnerStats } = useWinnerHistory();
@@ -102,7 +106,19 @@ export default function WheelPage() {
       setSpinning(false);
       const normalizedRotation = ((total % 360) + 360) % 360;
       const pointerSegmentIndex = Math.floor(((360 - normalizedRotation) % 360) / segAngle) % entries.length;
-      const winner = entries[pointerSegmentIndex];
+      let winner = entries[pointerSegmentIndex];
+      
+      // Remove winner mode: track selected entries
+      if (removeWinnerMode) {
+        const newSelected = new Set(selectedWinners);
+        newSelected.add(winner);
+        setSelectedWinners(newSelected);
+        
+        if (newSelected.size === entries.length) {
+          toast.info("All entries selected! Resetting...");
+          setSelectedWinners(new Set());
+        }
+      }
       
       setResult(winner);
       addWinner(winner, wheelId);
@@ -140,7 +156,35 @@ export default function WheelPage() {
     setResult(null);
     setRotation(0);
     setShowCelebration(false);
+    setSelectedWinners(new Set());
     toast.success("Wheel reset");
+  };
+
+  const generateShareLink = async () => {
+    if (entries.length < 2) {
+      toast.error("Add at least 2 entries to share!");
+      return;
+    }
+    
+    const wheelData = btoa(JSON.stringify({ title: wheelTitle, entries }));
+    const shortId = Math.random().toString(36).substring(2, 10);
+    const shortUrl = `${window.location.origin}/w/${shortId}`;
+    
+    const shortLinks = JSON.parse(localStorage.getItem('wheeloname_short_links') || '{}');
+    shortLinks[shortId] = { wheelData, createdAt: Date.now(), title: wheelTitle };
+    localStorage.setItem('wheeloname_short_links', JSON.stringify(shortLinks));
+    
+    setShareLink(shortUrl);
+    setShowShareModal(true);
+  };
+  
+  const copyShareLink = () => {
+    if (shareLink) {
+      navigator.clipboard.writeText(shareLink);
+      setCopied(true);
+      toast.success("Share link copied!");
+      setTimeout(() => setCopied(false), 2000);
+    }
   };
 
   const shareWheel = () => {
@@ -174,14 +218,46 @@ export default function WheelPage() {
       const newEntries = content
         .split("\n")
         .map((line) => line.trim())
-        .filter((line) => line.length > 0);
+        .filter((line) => line.length > 0 && !line.startsWith("#"));
 
       if (newEntries.length > 0) {
         setEntries(newEntries);
         toast.success(`Imported ${newEntries.length} entries!`);
+      } else {
+        toast.error("No valid entries found in file");
       }
     };
     reader.readAsText(file);
+  };
+
+  const importFromGoogleSheets = async () => {
+    const sheetUrl = prompt(
+      "Paste your Google Sheets CSV export URL:\n\nSteps:\n1. Open your Google Sheet\n2. File → Download → CSV\n3. Paste the download link here",
+      ""
+    );
+    
+    if (!sheetUrl) return;
+    
+    try {
+      toast.loading("Importing from Google Sheets...");
+      const response = await fetch(sheetUrl);
+      const content = await response.text();
+      
+      const newEntries = content
+        .split("\n")
+        .map((line) => line.trim())
+        .filter((line) => line.length > 0 && !line.startsWith("#"));
+
+      if (newEntries.length > 0) {
+        setEntries(newEntries);
+        toast.success(`Imported ${newEntries.length} entries from Google Sheets!`);
+      } else {
+        toast.error("No valid entries found");
+      }
+    } catch (error) {
+      toast.error("Failed to import. Make sure the link is public and accessible.");
+      console.error("Import error:", error);
+    }
   };
 
   const handleThemeSelect = (theme: Theme) => {
@@ -449,6 +525,17 @@ export default function WheelPage() {
                   {soundEnabled ? "On" : "Off"}
                 </button>
                 <button
+                  onClick={() => setRemoveWinnerMode(!removeWinnerMode)}
+                  className={`flex items-center gap-1.5 text-xs px-2 py-1 rounded-lg transition-colors ${
+                    removeWinnerMode
+                      ? "text-purple-600 bg-purple-50 border border-purple-200"
+                      : "text-gray-500 hover:text-purple-600 hover:bg-purple-50"
+                  }`}
+                  title="No repeats until all selected"
+                >
+                  ✓ No Repeat
+                </button>
+                <button
                   onClick={resetWheel}
                   className="flex items-center gap-1.5 text-xs text-gray-500 hover:text-purple-600 transition-colors px-2 py-1 rounded-lg hover:bg-purple-50"
                 >
@@ -526,11 +613,11 @@ export default function WheelPage() {
             {/* Action buttons */}
             <div className="space-y-2">
               <button
-                onClick={shareWheel}
+                onClick={generateShareLink}
                 className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 transition-all active:scale-95"
               >
                 <Copy size={16} />
-                {copied ? "Copied!" : "Share Wheel"}
+                {showShareModal ? "Copy Link" : "Get Share Link"}
               </button>
 
               <div className="grid grid-cols-2 gap-2">
@@ -549,6 +636,13 @@ export default function WheelPage() {
                   Import CSV
                 </button>
               </div>
+
+              <button
+                onClick={importFromGoogleSheets}
+                className="w-full py-2.5 rounded-xl text-sm font-semibold text-purple-700 bg-purple-50 hover:bg-purple-100 border border-purple-200 transition-colors"
+              >
+                Import from Google Sheets
+              </button>
 
               <button
                 onClick={saveWheelToStorage}
@@ -595,6 +689,32 @@ export default function WheelPage() {
         onChange={importCSV}
         className="hidden"
       />
+
+      {showShareModal && shareLink && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 space-y-4">
+            <h3 className="text-xl font-bold text-gray-900">Share Your Wheel</h3>
+            <p className="text-sm text-gray-600">Send this link to share your wheel:</p>
+            <div className="bg-gray-50 p-4 rounded-lg border border-gray-200 break-all">
+              <code className="text-xs font-mono text-gray-700">{shareLink}</code>
+            </div>
+            <div className="flex gap-2">
+              <button
+                onClick={copyShareLink}
+                className="flex-1 py-2.5 rounded-xl font-semibold text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 transition-all active:scale-95"
+              >
+                {copied ? "Copied!" : "Copy Link"}
+              </button>
+              <button
+                onClick={() => setShowShareModal(false)}
+                className="flex-1 py-2.5 rounded-xl font-semibold text-gray-700 bg-gray-100 hover:bg-gray-200 transition-all active:scale-95"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       </div>
     </>
   );
