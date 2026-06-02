@@ -1,20 +1,28 @@
 /* =============================================================
    Header — Wheeloname
-   Sticky top nav with logo, links, and "New Wheel" CTA button
+   Sticky top nav with logo, links, language switcher, and CTA
    ============================================================= */
 
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Globe } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const NAV_LINKS = [
   { label: "My Wheels", href: "/wheels" },
-  { label: "Teams", href: "/teams" },
+  { label: "Team Generator", href: "/team-generator" },
+  { label: "Presets", href: "/presets" },
+  { label: "Classroom", href: "/classroom" },
+  { label: "Widget", href: "/widget" },
+  { label: "Analytics", href: "/analytics" },
+  { label: "Customize", href: "/customize" },
+  { label: "Trending", href: "/trending" },
 ];
 
 export default function Header() {
   const [location] = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { language, setLanguage } = useLanguage();
 
   return (
     <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm">
@@ -50,6 +58,31 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
+
+            {/* Language Switcher */}
+            <div className="ml-2 flex items-center gap-1 border-l border-gray-200 pl-2">
+              <button
+                onClick={() => setLanguage("en")}
+                className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                  language === "en"
+                    ? "text-purple-700 bg-purple-50"
+                    : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+                }`}
+              >
+                EN
+              </button>
+              <button
+                onClick={() => setLanguage("ar")}
+                className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                  language === "ar"
+                    ? "text-purple-700 bg-purple-50"
+                    : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+                }`}
+              >
+                العربية
+              </button>
+            </div>
+
             <Link href="/wheel/new">
               <button className="ml-2 px-4 py-2 rounded-lg text-sm font-semibold text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 shadow-sm hover:shadow-purple-200 transition-all duration-200 active:scale-95">
                 New Wheel
@@ -81,8 +114,39 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
+
+          {/* Mobile Language Switcher */}
+          <div className="flex gap-2 mt-2 border-t border-gray-100 pt-2">
+            <button
+              onClick={() => {
+                setLanguage("en");
+                setMobileOpen(false);
+              }}
+              className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                language === "en"
+                  ? "text-purple-700 bg-purple-50"
+                  : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+              }`}
+            >
+              EN
+            </button>
+            <button
+              onClick={() => {
+                setLanguage("ar");
+                setMobileOpen(false);
+              }}
+              className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                language === "ar"
+                  ? "text-purple-700 bg-purple-50"
+                  : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+              }`}
+            >
+              العربية
+            </button>
+          </div>
+
           <Link href="/wheel/new" onClick={() => setMobileOpen(false)}>
-            <button className="mt-1 w-full px-4 py-2.5 rounded-lg text-sm font-semibold text-white bg-gradient-to-r from-purple-600 to-indigo-600 shadow-sm">
+            <button className="mt-3 w-full px-4 py-2.5 rounded-lg text-sm font-semibold text-white bg-gradient-to-r from-purple-600 to-indigo-600 shadow-sm">
               New Wheel
             </button>
           </Link>
