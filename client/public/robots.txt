@@ -4,7 +4,7 @@ Disallow: /admin
 Disallow: /private
 
 # Sitemaps
-Sitemap: https://www.wheeloname.com/sitemap.xml
+Sitemap: https://wheeloname.com/sitemap.xml
 
 # Crawl delay (optional)
 Crawl-delay: 1
