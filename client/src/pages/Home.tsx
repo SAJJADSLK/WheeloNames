@@ -272,6 +272,120 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── What is Wheeloname ── */}
+      <section className="py-20 px-4 bg-gray-50">
+        <div className="max-w-4xl mx-auto">
+          <h2
+            className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-6"
+            style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+          >
+            What is Wheeloname?
+          </h2>
+          <div className="prose prose-lg max-w-none text-gray-700 space-y-4">
+            <p>
+              Wheeloname is a free online spin wheel maker designed to make random selection simple, fair, and fun. Whether you're a teacher picking students, an event organizer running a raffle, or friends deciding where to eat, Wheeloname helps you make decisions with a spin. We believe that fair, transparent randomization should be accessible to everyone, regardless of technical skill or budget.
+            </p>
+            <p>
+              Unlike other random selectors, Wheeloname offers powerful features like weighted entries, team division, customizable themes, and the ability to save your wheels for future use. Our intuitive interface makes it easy for anyone to create and spin wheels in seconds, without any technical knowledge required.
+            </p>
+            <p>
+              With over 2,500 satisfied users and a 4.8-star rating, Wheeloname has become the go-to tool for teachers, event organizers, and anyone who needs fair randomization. Join thousands of users who trust Wheeloname for their random selection needs.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── How Wheeloname Works ── */}
+      <section className="py-20 px-4 bg-white">
+        <div className="max-w-4xl mx-auto">
+          <h2
+            className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-12 text-center"
+            style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+          >
+            How Wheeloname Works
+          </h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="text-5xl mb-4">1️⃣</div>
+              <h3 className="text-xl font-bold mb-3">Create Your Wheel</h3>
+              <p className="text-gray-600">
+                Add entries, names, or options to your wheel. You can add as many as you want. Simply type in your entries and they'll appear on the wheel instantly.
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="text-5xl mb-4">2️⃣</div>
+              <h3 className="text-xl font-bold mb-3">Customize Your Design</h3>
+              <p className="text-gray-600">
+                Choose from 6 beautiful themes, adjust colors, and personalize your wheel to match your style or brand. Make it uniquely yours.
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="text-5xl mb-4">3️⃣</div>
+              <h3 className="text-xl font-bold mb-3">Spin and Share</h3>
+              <p className="text-gray-600">
+                Spin your wheel, celebrate the winner, and share your results with others. Generate shareable links to let others spin your wheels.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Why Choose Wheeloname ── */}
+      <section className="py-20 px-4 bg-gray-50">
+        <div className="max-w-4xl mx-auto">
+          <h2
+            className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-12 text-center"
+            style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+          >
+            Why Choose Wheeloname?
+          </h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="flex gap-4">
+              <div className="text-3xl flex-shrink-0">✅</div>
+              <div>
+                <h3 className="font-bold text-lg mb-2">Completely Free</h3>
+                <p className="text-gray-600">No sign-up, no hidden fees, no premium tiers. Just create, spin, and enjoy. Forever free.</p>
+              </div>
+            </div>
+            <div className="flex gap-4">
+              <div className="text-3xl flex-shrink-0">✅</div>
+              <div>
+                <h3 className="font-bold text-lg mb-2">Fully Customizable</h3>
+                <p className="text-gray-600">6 beautiful themes, unlimited colors, custom fonts, and personalization options to match your needs.</p>
+              </div>
+            </div>
+            <div className="flex gap-4">
+              <div className="text-3xl flex-shrink-0">✅</div>
+              <div>
+                <h3 className="font-bold text-lg mb-2">Powerful Features</h3>
+                <p className="text-gray-600">Weighted entries, team division, CSV import/export, sound effects, and more advanced features.</p>
+              </div>
+            </div>
+            <div className="flex gap-4">
+              <div className="text-3xl flex-shrink-0">✅</div>
+              <div>
+                <h3 className="font-bold text-lg mb-2">Privacy First</h3>
+                <p className="text-gray-600">Your wheels are stored only in your browser. We don't collect or store your personal data.</p>
+              </div>
+            </div>
+            <div className="flex gap-4">
+              <div className="text-3xl flex-shrink-0">✅</div>
+              <div>
+                <h3 className="font-bold text-lg mb-2">Works Offline</h3>
+                <p className="text-gray-600">Progressive Web App (PWA) that works offline. Install on your device and use anywhere.</p>
+              </div>
+            </div>
+            <div className="flex gap-4">
+              <div className="text-3xl flex-shrink-0">✅</div>
+              <div>
+                <h3 className="font-bold text-lg mb-2">Always Improving</h3>
+                <p className="text-gray-600">We continuously add new features and improvements based on user feedback and requests.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── FAQ Section ── */}
       <section className="py-20 px-4 bg-white">
         <div className="max-w-3xl mx-auto">

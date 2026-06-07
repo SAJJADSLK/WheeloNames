@@ -11,7 +11,7 @@ export default function WidgetPage() {
   const [copied, setCopied] = useState(false);
 
   const embedCode = `<iframe
-  src="https://wheelo-names.vercel.app/widget?id=${wheelId}&theme=${theme}"
+  src="https://www.wheeloname.com/widget?id=${wheelId}&theme=${theme}"
   width="${width}"
   height="${height}"
   frameborder="0"

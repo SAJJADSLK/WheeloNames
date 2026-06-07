@@ -109,9 +109,21 @@ export default function PresetsPage() {
                 Preset Wheels
               </h1>
             </div>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <p className="text-gray-600 max-w-2xl mx-auto text-lg mb-6">
               Ready-to-use wheels for popular games, ice breakers, and party activities. Click any wheel to start spinning!
             </p>
+            <div className="max-w-4xl mx-auto text-left bg-purple-50 rounded-lg p-6 mb-8">
+              <h2 className="text-2xl font-bold mb-4 text-gray-900">Why Use Preset Wheels?</h2>
+              <p className="text-gray-700 mb-4">
+                Preset wheels are perfect for anyone who wants to get started immediately without creating entries from scratch. Whether you are hosting a party, running a classroom activity, or organizing a team meeting, our preset wheels have you covered.
+              </p>
+              <ul className="space-y-2 text-gray-700">
+                <li>✅ <strong>Save Time:</strong> Start spinning in seconds with pre-loaded entries</li>
+                <li>✅ <strong>Fully Customizable:</strong> Edit entries, colors, and settings to match your needs</li>
+                <li>✅ <strong>Share Easily:</strong> Generate shareable links to let others use your wheels</li>
+                <li>✅ <strong>Free Forever:</strong> All preset wheels are completely free to use</li>
+              </ul>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
