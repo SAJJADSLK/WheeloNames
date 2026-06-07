@@ -17,6 +17,12 @@ import AnalyticsPage from "./pages/AnalyticsPage";
 import CustomizationPage from "./pages/CustomizationPage";
 import LeaderboardPage from "./pages/LeaderboardPage";
 import { LanguageProvider } from "./contexts/LanguageContext";
+import PrivacyPage from "./pages/PrivacyPage";
+import TermsPage from "./pages/TermsPage";
+import AboutPage from "./pages/AboutPage";
+import BlogPage from "./pages/BlogPage";
+import FAQPage from "./pages/FAQPage";
+import Footer from "./components/Footer";
 
 function Router() {
   return (
@@ -32,6 +38,11 @@ function Router() {
       <Route path="/analytics" component={AnalyticsPage} />
       <Route path="/customize" component={CustomizationPage} />
       <Route path="/trending" component={LeaderboardPage} />
+      <Route path="/blog" component={BlogPage} />
+      <Route path="/faq" component={FAQPage} />
+      <Route path="/privacy" component={PrivacyPage} />
+      <Route path="/terms" component={TermsPage} />
+      <Route path="/about" component={AboutPage} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>
@@ -46,7 +57,10 @@ function App() {
           <TooltipProvider>
             <GlobalErrorHandler />
             <Toaster />
-            <Router />
+            <div className="flex flex-col min-h-screen">
+              <Router />
+              <Footer />
+            </div>
           </TooltipProvider>
         </ThemeProvider>
       </LanguageProvider>
