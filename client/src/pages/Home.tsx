@@ -70,19 +70,37 @@ const MAIN_FEATURES = [
   },
 ];
 
-export default function Home() {
+/* ── AdSense helper ──────────────────────────────────────────────
+   Your publisher ID: ca-pub-3811332485680799
+   Slots below use "auto" format — Google will pick the best ad
+   size for each placement automatically. Once your account is
+   approved, replace the slot numbers with real ones from your
+   AdSense dashboard (Ad units → Display ads → Get code).
+   Until then, leaving slot="auto" is perfectly valid for review.
+──────────────────────────────────────────────────────────────── */
+function AdBanner({ slot, format = "auto" }: { slot: string; format?: string }) {
   useEffect(() => {
-    // Push AdSense ads when component mounts
-    const w = window as any;
-    if (w.adsbygoogle) {
-      try {
-        (w.adsbygoogle = w.adsbygoogle || []).push({});
-      } catch (e) {
-        console.log("AdSense error:", e);
-      }
+    try {
+      const w = window as any;
+      (w.adsbygoogle = w.adsbygoogle || []).push({});
+    } catch (e) {
+      // AdSense not yet loaded — safe to ignore during development
     }
   }, []);
 
+  return (
+    <ins
+      className="adsbygoogle"
+      style={{ display: "block", minHeight: "90px" }}
+      data-ad-client="ca-pub-3811332485680799"
+      data-ad-slot={slot}
+      data-ad-format={format}
+      data-full-width-responsive="true"
+    />
+  );
+}
+
+export default function Home() {
   return (
     <div className="min-h-screen bg-white flex flex-col">
       <Header />
@@ -125,7 +143,7 @@ export default function Home() {
 
           {/* Subheadline */}
           <p className="animate-fade-up animate-fade-up-delay-2 text-lg text-gray-500 max-w-xl mx-auto mb-10 leading-relaxed">
-            The free online spin wheel maker for classrooms, raffles, giveaways & decisions. Create custom wheels, pick random names, divide teams, and make fair decisions instantly.
+            The free online spin wheel maker for classrooms, raffles, giveaways &amp; decisions. Create custom wheels, pick random names, divide teams, and make fair decisions instantly.
           </p>
 
           {/* CTA Buttons */}
@@ -152,16 +170,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── AdSense Banner 1 ── */}
-      <section className="py-6 px-4 bg-white border-y border-gray-100 text-center">
-        <ins
-          className="adsbygoogle"
-          style={{ display: "block" }}
-          data-ad-client="ca-pub-xxxxxxxxxxxxxxxx"
-          data-ad-slot="1234567890"
-          data-ad-format="horizontal"
-          data-full-width-responsive="true"
-        />
+      {/* ── AdSense Banner 1 — below hero ── */}
+      {/* Placement: high-visibility, above-the-fold adjacent. Great for leaderboard/banner ads. */}
+      <section className="py-4 px-4 bg-white border-b border-gray-100 text-center" aria-label="Advertisement">
+        <AdBanner slot="auto" format="horizontal" />
       </section>
 
       {/* ── Main Features ── */}
@@ -221,16 +233,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── AdSense Banner 2 ── */}
-      <section className="py-6 px-4 bg-gray-50 border-y border-gray-100 text-center">
-        <ins
-          className="adsbygoogle"
-          style={{ display: "block" }}
-          data-ad-client="ca-pub-xxxxxxxxxxxxxxxx"
-          data-ad-slot="9876543210"
-          data-ad-format="horizontal"
-          data-full-width-responsive="true"
-        />
+      {/* ── AdSense Banner 2 — mid-page ── */}
+      {/* Placement: mid-content, between use-cases and features grid. Good for in-article/rectangle ads. */}
+      <section className="py-4 px-4 bg-gray-50 border-y border-gray-100 text-center" aria-label="Advertisement">
+        <AdBanner slot="auto" format="rectangle" />
       </section>
 
       {/* ── Features Grid ── */}
@@ -289,7 +295,7 @@ export default function Home() {
               Unlike other random selectors, Wheeloname offers powerful features like weighted entries, team division, customizable themes, and the ability to save your wheels for future use. Our intuitive interface makes it easy for anyone to create and spin wheels in seconds, without any technical knowledge required.
             </p>
             <p>
-              With over 2,500 satisfied users and a 4.8-star rating, Wheeloname has become the go-to tool for teachers, event organizers, and anyone who needs fair randomization. Join thousands of users who trust Wheeloname for their random selection needs.
+              Wheeloname has become the go-to tool for teachers, event organisers, and anyone who needs fast, transparent randomisation. Join a growing community of users who trust Wheeloname for decisions big and small.
             </p>
           </div>
         </div>
@@ -386,6 +392,12 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── AdSense Banner 3 — before FAQ ── */}
+      {/* Placement: pre-FAQ, strong engagement zone. Works well as a wide banner or responsive unit. */}
+      <section className="py-4 px-4 bg-white border-y border-gray-100 text-center" aria-label="Advertisement">
+        <AdBanner slot="auto" format="auto" />
+      </section>
+
       {/* ── FAQ Section ── */}
       <section className="py-20 px-4 bg-white">
         <div className="max-w-3xl mx-auto">
@@ -399,7 +411,7 @@ export default function Home() {
             {[
               {
                 q: "Is Wheeloname really free?",
-                a: "Yes! Wheeloname is completely free with no hidden charges, no ads interrupting your spin, and no sign-up required.",
+                a: "Yes! Wheeloname is completely free to use. No sign-up required and no hidden fees. You can create unlimited wheels and use all features without paying anything.",
               },
               {
                 q: "Can I save my wheels?",
@@ -453,7 +465,7 @@ export default function Home() {
           >
             Ready to spin?
           </h2>
-          <p className="text-purple-200 text-lg mb-8">No sign-up. No ads. Just spin.</p>
+          <p className="text-purple-200 text-lg mb-8">No sign-up needed. Create your wheel in seconds.</p>
           <Link href="/wheel/new">
             <button className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-base font-bold text-purple-700 bg-white hover:bg-purple-50 shadow-xl hover:shadow-2xl transition-all duration-200 active:scale-95">
               Start Spinning Free
@@ -495,17 +507,17 @@ export default function Home() {
             <div>
               <h4 className="font-bold text-gray-900 text-sm mb-3">Use Cases</h4>
               <ul className="space-y-2 text-xs text-gray-600">
-                <li>Classroom Picker</li>
-                <li>Party Games</li>
-                <li>Prize Draws</li>
+                <li><Link href="/classroom">Classroom Picker</Link></li>
+                <li><Link href="/presets">Party Games</Link></li>
+                <li><Link href="/wheel/new">Prize Draws</Link></li>
               </ul>
             </div>
             <div>
               <h4 className="font-bold text-gray-900 text-sm mb-3">Legal</h4>
               <ul className="space-y-2 text-xs text-gray-600">
-                <li><a href="#" className="hover:text-purple-600">Privacy Policy</a></li>
-                <li><a href="#" className="hover:text-purple-600">Terms of Service</a></li>
-                <li><a href="#" className="hover:text-purple-600">Contact</a></li>
+                <li><Link href="/privacy" className="hover:text-purple-600">Privacy Policy</Link></li>
+                <li><Link href="/terms" className="hover:text-purple-600">Terms of Service</Link></li>
+                <li><Link href="/contact" className="hover:text-purple-600">Contact</Link></li>
               </ul>
             </div>
           </div>
