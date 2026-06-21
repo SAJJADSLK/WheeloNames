@@ -22,6 +22,12 @@ import TermsPage from "./pages/TermsPage";
 import AboutPage from "./pages/AboutPage";
 import BlogPage from "./pages/BlogPage";
 import FAQPage from "./pages/FAQPage";
+import ContactPage from "./pages/ContactPage";
+import BlogPostClassroom from "./pages/BlogPostClassroom";
+import BlogPostRaffles from "./pages/BlogPostRaffles";
+import BlogPostTeamBuilding from "./pages/BlogPostTeamBuilding";
+import BlogPostPsychology from "./pages/BlogPostPsychology";
+import BlogPostWeighted from "./pages/BlogPostWeighted";
 import Footer from "./components/Footer";
 
 function Router() {
@@ -39,10 +45,16 @@ function Router() {
       <Route path="/customize" component={CustomizationPage} />
       <Route path="/trending" component={LeaderboardPage} />
       <Route path="/blog" component={BlogPage} />
+      <Route path="/blog/spin-wheels-in-classrooms" component={BlogPostClassroom} />
+      <Route path="/blog/how-to-run-fair-raffles" component={BlogPostRaffles} />
+      <Route path="/blog/team-building-with-spin-wheels" component={BlogPostTeamBuilding} />
+      <Route path="/blog/psychology-of-random-selection" component={BlogPostPsychology} />
+      <Route path="/blog/weighted-spin-wheels-explained" component={BlogPostWeighted} />
       <Route path="/faq" component={FAQPage} />
       <Route path="/privacy" component={PrivacyPage} />
       <Route path="/terms" component={TermsPage} />
       <Route path="/about" component={AboutPage} />
+      <Route path="/contact" component={ContactPage} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>
