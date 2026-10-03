@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { BarChart3, TrendingUp, Users, Zap, Download } from "lucide-react";
 import { toast } from "sonner";
 import Header from "@/components/Header";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
 interface WheelStats {
   id: string;
@@ -14,6 +15,7 @@ interface WheelStats {
 }
 
 export default function AnalyticsPage() {
+  usePageTitle("Wheel Analytics - Track Your Spins ");
   const [stats, setStats] = useState<WheelStats[]>([]);
   const [totalSpins, setTotalSpins] = useState(0);
   const [totalVisitors, setTotalVisitors] = useState(0);
@@ -39,7 +41,12 @@ export default function AnalyticsPage() {
 
         const total = wheelStats.reduce((sum, w) => sum + w.spins, 0);
         const visitors = wheelStats.reduce((sum, w) => sum + w.uniqueVisitors, 0);
-        const days = Math.max(1, Math.floor(Math.random() * 30) + 1);
+        // Estimate: average spins per day since the oldest saved wheel was created
+        const oldest = wheelStats.reduce(
+          (min: number, w) => Math.min(min, new Date(w.createdDate).getTime() || Date.now()),
+          Date.now()
+        );
+        const days = Math.max(1, Math.round((Date.now() - oldest) / 86400000));
 
         setTotalSpins(total);
         setTotalVisitors(visitors);
