@@ -2,8 +2,10 @@ import { useState, useRef } from "react";
 import { Users, Plus, Trash2, Download, RotateCcw, Copy } from "lucide-react";
 import { toast } from "sonner";
 import Header from "@/components/Header";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
 export default function TeamGeneratorPage() {
+  usePageTitle("Random Team Generator - Divide Groups Fairly ");
   const [participants, setParticipants] = useState<string[]>([]);
   const [newParticipant, setNewParticipant] = useState("");
   const [numTeams, setNumTeams] = useState(2);
