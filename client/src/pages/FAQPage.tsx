@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
 const FAQS = [
   {
@@ -66,6 +67,7 @@ const FAQS = [
 ];
 
 export default function FAQPage() {
+  usePageTitle("Frequently Asked Questions ");
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
