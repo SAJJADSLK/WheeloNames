@@ -1,6 +1,8 @@
 import Header from "@/components/Header";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
 export default function PrivacyPage() {
+  usePageTitle("Privacy Policy ");
   return (
     <div className="min-h-screen bg-white">
       <Header />
