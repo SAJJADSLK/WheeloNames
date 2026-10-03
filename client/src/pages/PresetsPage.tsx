@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Zap, Copy } from "lucide-react";
 import { toast } from "sonner";
 import Header from "@/components/Header";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
 const PRESETS = {
   truthOrDare: {
@@ -79,6 +80,7 @@ const PRESETS = {
 };
 
 export default function PresetsPage() {
+  usePageTitle("Preset Spin Wheels - Party Games, Ice Breakers & More ");
   const [copied, setCopied] = useState<string | null>(null);
 
   const copyPreset = (key: string) => {
