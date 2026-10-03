@@ -46,9 +46,9 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-sm text-gray-400">&copy; 2026 Wheeloname. All rights reserved.</p>
             <div className="flex gap-6 text-sm text-gray-400">
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Twitter</a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Facebook</a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Instagram</a>
+              <Link href="/blog" className="hover:text-white transition-colors">Blog</Link>
+              <Link href="/faq" className="hover:text-white transition-colors">FAQ</Link>
+              <Link href="/contact" className="hover:text-white transition-colors">Contact</Link>
             </div>
           </div>
         </div>
