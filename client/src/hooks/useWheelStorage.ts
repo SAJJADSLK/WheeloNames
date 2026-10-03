@@ -10,6 +10,7 @@ export interface WheelData {
   title: string;
   entries: string[];
   color?: string;
+  colors?: string[];
   createdAt: number;
   updatedAt: number;
 }
@@ -44,12 +45,13 @@ export function useWheelStorage() {
     }
   }, [wheels, loaded]);
 
-  const saveWheel = (title: string, entries: string[]) => {
+  const saveWheel = (title: string, entries: string[], colors?: string[]) => {
     const id = Date.now().toString();
     const newWheel: WheelData = {
       id,
       title,
       entries,
+      colors,
       createdAt: Date.now(),
       updatedAt: Date.now(),
     };
@@ -57,11 +59,11 @@ export function useWheelStorage() {
     return id;
   };
 
-  const updateWheel = (id: string, title: string, entries: string[]) => {
+  const updateWheel = (id: string, title: string, entries: string[], colors?: string[]) => {
     setWheels((prev) =>
       prev.map((w) =>
         w.id === id
-          ? { ...w, title, entries, updatedAt: Date.now() }
+          ? { ...w, title, entries, ...(colors ? { colors } : {}), updatedAt: Date.now() }
           : w
       )
     );
