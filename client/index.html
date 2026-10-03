@@ -60,24 +60,17 @@
         "@type": "Offer",
         "price": "0",
         "priceCurrency": "USD"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "ratingCount": "2500"
       }
     }
     </script>
     
     <!-- Additional SEO Enhancements -->
+    <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Wheeloname" />
     <meta name="msapplication-TileColor" content="#7c3aed" />
     <meta name="msapplication-config" content="/browserconfig.xml" />
-    
-    <!-- Preload Critical Resources -->
-    <link rel="preload" as="font" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" crossorigin />
     
     <!-- Sitemap and RSS -->
     <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
@@ -91,9 +84,5 @@
     <h1 style="display: none; position: absolute; left: -9999px;">Wheeloname - Free Online Spin Wheel Maker for Classrooms, Raffles & Decisions</h1>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    <script
-      defer
-      src="%VITE_ANALYTICS_ENDPOINT%/umami"
-      data-website-id="%VITE_ANALYTICS_WEBSITE_ID%"></script>
   </body>
 </html>
