@@ -1,3 +1,4 @@
+import { usePageTitle } from "@/hooks/usePageTitle";
 /* =============================================================
    Home Page — Wheeloname
    Design: Playful Precision — white bg, purple accent, clean typography
@@ -101,6 +102,7 @@ function AdBanner({ slot, format = "auto" }: { slot: string; format?: string }) 
 }
 
 export default function Home() {
+  usePageTitle("Wheeloname - Free Spin Wheel Maker, Random Name Picker & Classroom Tool");
   return (
     <div className="min-h-screen bg-white flex flex-col">
       <Header />
@@ -474,58 +476,6 @@ export default function Home() {
           </Link>
         </div>
       </section>
-
-      {/* ── Footer ── */}
-      <footer className="py-12 px-4 bg-white border-t border-gray-100">
-        <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-4 gap-8 mb-8">
-            <div>
-              <div className="flex items-center gap-2 mb-3">
-                <div className="w-6 h-6 rounded-full bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center">
-                  <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
-                    <circle cx="8" cy="8" r="3" fill="white" />
-                    <path d="M8 1 A7 7 0 0 1 15 8" stroke="white" strokeWidth="2" strokeLinecap="round" fill="none" />
-                  </svg>
-                </div>
-                <span
-                  className="text-sm font-bold text-gray-900"
-                  style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-                >
-                  Wheeloname
-                </span>
-              </div>
-              <p className="text-xs text-gray-500">Free forever. No account required.</p>
-            </div>
-            <div>
-              <h4 className="font-bold text-gray-900 text-sm mb-3">Product</h4>
-              <ul className="space-y-2 text-xs text-gray-600">
-                <li><Link href="/wheel/new">Create Wheel</Link></li>
-                <li><Link href="/wheels">My Wheels</Link></li>
-                <li><Link href="/teams">Teams</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold text-gray-900 text-sm mb-3">Use Cases</h4>
-              <ul className="space-y-2 text-xs text-gray-600">
-                <li><Link href="/classroom">Classroom Picker</Link></li>
-                <li><Link href="/presets">Party Games</Link></li>
-                <li><Link href="/wheel/new">Prize Draws</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold text-gray-900 text-sm mb-3">Legal</h4>
-              <ul className="space-y-2 text-xs text-gray-600">
-                <li><Link href="/privacy" className="hover:text-purple-600">Privacy Policy</Link></li>
-                <li><Link href="/terms" className="hover:text-purple-600">Terms of Service</Link></li>
-                <li><Link href="/contact" className="hover:text-purple-600">Contact</Link></li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-gray-100 pt-8 text-center text-xs text-gray-500">
-            <p>&copy; 2026 Wheeloname. All rights reserved. Made with ❤️ for decision makers everywhere.</p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }
