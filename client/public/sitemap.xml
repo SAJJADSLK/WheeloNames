@@ -3,7 +3,7 @@
   <!-- Main Pages -->
   <url>
     <loc>https://www.wheeloname.com/</loc>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -11,13 +11,13 @@
   <!-- Wheel Creation & Management -->
   <url>
     <loc>https://www.wheeloname.com/wheel/new</loc>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.wheeloname.com/wheels</loc>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -25,13 +25,13 @@
   <!-- Team Management -->
   <url>
     <loc>https://www.wheeloname.com/teams</loc>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.wheeloname.com/team-generator</loc>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -39,7 +39,7 @@
   <!-- Preset Wheels -->
   <url>
     <loc>https://www.wheeloname.com/presets</loc>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
@@ -47,7 +47,7 @@
   <!-- Educational Resources -->
   <url>
     <loc>https://www.wheeloname.com/classroom</loc>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -55,15 +55,29 @@
   <!-- Customization & Themes -->
   <url>
     <loc>https://www.wheeloname.com/customize</loc>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.wheeloname.com/analytics</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Popular Wheel Ideas -->
+  <url>
+    <loc>https://www.wheeloname.com/trending</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 
   <!-- Developer Resources -->
   <url>
     <loc>https://www.wheeloname.com/widget</loc>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -71,37 +85,37 @@
   <!-- Blog / Editorial Content (highest-value long-form pages) -->
   <url>
     <loc>https://www.wheeloname.com/blog</loc>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.wheeloname.com/blog/spin-wheels-in-classrooms</loc>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://www.wheeloname.com/blog/how-to-run-fair-raffles</loc>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://www.wheeloname.com/blog/team-building-with-spin-wheels</loc>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://www.wheeloname.com/blog/psychology-of-random-selection</loc>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://www.wheeloname.com/blog/weighted-spin-wheels-explained</loc>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
@@ -109,31 +123,31 @@
   <!-- Informational / Trust Pages -->
   <url>
     <loc>https://www.wheeloname.com/faq</loc>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
     <loc>https://www.wheeloname.com/about</loc>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.wheeloname.com/contact</loc>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.wheeloname.com/privacy</loc>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://www.wheeloname.com/terms</loc>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
