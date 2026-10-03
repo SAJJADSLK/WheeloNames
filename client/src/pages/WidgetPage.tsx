@@ -2,8 +2,10 @@ import { useState } from "react";
 import { Code, Copy, Download } from "lucide-react";
 import { toast } from "sonner";
 import Header from "@/components/Header";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
 export default function WidgetPage() {
+  usePageTitle("Embed a Spin Wheel on Your Website ");
   const [wheelId, setWheelId] = useState("demo-wheel-123");
   const [width, setWidth] = useState(500);
   const [height, setHeight] = useState(500);
