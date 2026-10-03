@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Palette, Zap, RotateCw } from "lucide-react";
 import Header from "@/components/Header";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
 const THEMES = [
   {
@@ -77,6 +78,7 @@ const ANIMATIONS = [
 ];
 
 export default function CustomizationPage() {
+  usePageTitle("Customize Your Spin Wheel - Themes & Styles ");
   const [selectedTheme, setSelectedTheme] = useState("default");
   const [selectedAnimation, setSelectedAnimation] = useState("smooth");
   const [wheelSize, setWheelSize] = useState(400);
