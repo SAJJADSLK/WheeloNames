@@ -8,8 +8,7 @@ import Header from "@/components/Header";
 import SpinWheel from "@/components/SpinWheel";
 import { Link } from "wouter";
 import { ArrowRight, Zap, Users, Grid3x3 } from "lucide-react";
-import { useEffect } from "react";
-import AdBanner from "@/components/AdBanner";
+import { useEffect, useRef, useState } from "react";
 
 const USE_CASES = [
   { emoji: "🏫", title: "Classrooms", desc: "Random student picks, subject prompts" },
@@ -70,6 +69,59 @@ const MAIN_FEATURES = [
     desc: "Add unlimited entries, change colors, and save your wheels",
   },
 ];
+
+/* AdSense unit: stays collapsed until Google fills it (see comments in code). Needs a real numeric slot ID. */
+const AD_CLIENT = "ca-pub-3811332485680799";
+
+interface AdBannerProps {
+  slot: string;
+  format?: string;
+}
+
+function AdBanner({ slot, format = "auto" }: AdBannerProps) {
+  const insRef = useRef<HTMLModElement>(null);
+  const [filled, setFilled] = useState(false);
+  const validSlot = /^\d{6,}$/.test(slot);
+
+  useEffect(() => {
+    const ins = insRef.current;
+    if (!ins || !validSlot) return;
+
+    const observer = new MutationObserver(() => {
+      setFilled(ins.getAttribute("data-ad-status") === "filled");
+    });
+    observer.observe(ins, { attributes: true, attributeFilter: ["data-ad-status"] });
+
+    try {
+      // Guard against double pushes (React StrictMode) which AdSense reports as an error.
+      if (!ins.getAttribute("data-adsbygoogle-status")) {
+        const w = window as any;
+        (w.adsbygoogle = w.adsbygoogle || []).push({});
+      }
+    } catch {
+      // AdSense script not loaded (blocked or pending). Stay collapsed.
+    }
+
+    return () => observer.disconnect();
+  }, [validSlot]);
+
+  if (!validSlot) return null;
+
+  // Collapsed with height 0 (not display:none): AdSense needs a measurable width to fill the unit.
+  return (
+    <div style={filled ? undefined : { height: 0, overflow: "hidden" }}>
+      <ins
+        ref={insRef}
+        className="adsbygoogle"
+        style={{ display: "block" }}
+        data-ad-client={AD_CLIENT}
+        data-ad-slot={slot}
+        data-ad-format={format}
+        data-full-width-responsive="true"
+      />
+    </div>
+  );
+}
 
 export default function Home() {
   return (
