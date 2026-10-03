@@ -1,3 +1,4 @@
+import { usePageTitle } from "@/hooks/usePageTitle";
 /* =============================================================
    WheelsPage — My Wheels Dashboard
    Display saved wheels with spinning animation on hover
@@ -13,9 +14,16 @@ interface SavedWheel {
   id: string;
   title: string;
   entries: string[];
-  colors: string[];
-  createdAt: string;
+  colors?: string[];
+  createdAt: number | string;
 }
+
+// Saved wheels created by useWheelStorage have no colors, so fall back to these.
+const DEFAULT_COLORS = [
+  "#22d3ee", "#f97316", "#a855f7", "#22c55e",
+  "#ec4899", "#3b82f6", "#eab308", "#ef4444",
+  "#14b8a6", "#f59e0b", "#8b5cf6", "#10b981",
+];
 
 function polarToCartesian(cx: number, cy: number, r: number, angleDeg: number) {
   const rad = ((angleDeg - 90) * Math.PI) / 180;
@@ -23,6 +31,10 @@ function polarToCartesian(cx: number, cy: number, r: number, angleDeg: number) {
 }
 
 function describeArc(cx: number, cy: number, r: number, start: number, end: number) {
+  if (end - start >= 359.99) {
+    // One entry fills the whole wheel. An arc whose start and end points are identical draws nothing, so use two half-circles.
+    return `M ${cx} ${cy - r} A ${r} ${r} 0 1 1 ${cx} ${cy + r} A ${r} ${r} 0 1 1 ${cx} ${cy - r} Z`;
+  }
   const s = polarToCartesian(cx, cy, r, end);
   const e = polarToCartesian(cx, cy, r, start);
   const large = end - start <= 180 ? "0" : "1";
@@ -30,6 +42,7 @@ function describeArc(cx: number, cy: number, r: number, start: number, end: numb
 }
 
 export default function WheelsPage() {
+  usePageTitle("My Saved Wheels ");
   const [wheels, setWheels] = useState<SavedWheel[]>([]);
   const [, navigate] = useLocation();
   const [hoveringId, setHoveringId] = useState<string | null>(null);
@@ -42,7 +55,7 @@ export default function WheelsPage() {
       if (stored) {
         const parsed = JSON.parse(stored);
         if (Array.isArray(parsed)) {
-          setWheels(parsed);
+          setWheels(parsed.filter((w) => w && typeof w.id === "string" && Array.isArray(w.entries)));
         } else {
           console.warn("Invalid wheels data format");
           setWheels([]);
@@ -71,8 +84,8 @@ export default function WheelsPage() {
 
   const handleEdit = (wheel: SavedWheel) => {
     try {
-      const wheelData = btoa(JSON.stringify({ title: wheel.title, entries: wheel.entries }));
-      navigate(`/wheel/new?wheel=${wheelData}`);
+      // Pass the saved wheel's id; the editor loads it from storage and updates it in place.
+      navigate(`/wheel/new?edit=${encodeURIComponent(wheel.id)}`);
     } catch (error) {
       console.error("Error navigating to edit:", error);
       toast.error("Failed to open wheel editor");
@@ -158,6 +171,7 @@ export default function WheelsPage() {
             const segAngle = wheel.entries.length > 0 ? 360 / wheel.entries.length : 360;
             const rotation = wheelRotations[wheel.id] || 0;
             const isHovering = hoveringId === wheel.id;
+            const colors = wheel.colors?.length ? wheel.colors : DEFAULT_COLORS;
 
             return (
               <div
@@ -169,6 +183,7 @@ export default function WheelsPage() {
                   className="p-6 bg-gradient-to-br from-purple-50 to-blue-50 flex flex-col items-center gap-4 cursor-pointer relative overflow-hidden"
                   onMouseEnter={() => setHoveringId(wheel.id)}
                   onMouseLeave={() => setHoveringId(null)}
+                  onClick={() => setHoveringId(wheel.id)}
                 >
                   {/* Hover glow effect */}
                   {isHovering && (
@@ -213,7 +228,7 @@ export default function WheelsPage() {
                           const mid = start + segAngle / 2;
                           const textR = outerR * 0.65;
                           const textPos = polarToCartesian(cx, cy, textR, mid);
-                          const color = wheel.colors[i % wheel.colors.length];
+                          const color = colors[i % colors.length];
                           return (
                             <g key={i}>
                               <path
@@ -263,7 +278,7 @@ export default function WheelsPage() {
                   {/* Hover hint */}
                   <div className="flex items-center gap-2 text-xs text-gray-600 group-hover:text-purple-600 transition-colors opacity-0 group-hover:opacity-100 duration-300">
                     <Play size={12} fill="currentColor" />
-                    Hover to spin
+                    Hover or tap to spin
                   </div>
                 </div>
 
