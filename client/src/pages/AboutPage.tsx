@@ -1,8 +1,10 @@
 import Header from "@/components/Header";
 import { Mail, Globe, Heart } from "lucide-react";
 import { Link } from "wouter";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
 export default function AboutPage() {
+  usePageTitle("About Wheeloname - Free Fair Random Selection ");
   return (
     <div className="min-h-screen bg-white">
       <Header />
