@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import { Link } from "wouter";
 import { Calendar, User, ArrowRight, Clock } from "lucide-react";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
 const BLOG_POSTS = [
   {
@@ -66,6 +67,7 @@ const BLOG_POSTS = [
 ];
 
 export default function BlogPage() {
+  usePageTitle("Blog - Spin Wheel Guides, Tips & Ideas ");
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -124,9 +126,9 @@ export default function BlogPage() {
         </div>
 
         <div className="mt-16 p-8 bg-gradient-to-br from-purple-50 to-indigo-50 rounded-2xl border border-purple-100 text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-3">More guides coming soon</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-3">Put these ideas into practice</h2>
           <p className="text-gray-600 mb-2">
-            We publish new articles on random selection, decision-making, and classroom tools regularly.
+            Every guide above pairs with a free tool on this site — weighted wheels, team division, classroom pickers, and ready-made templates.
           </p>
           <p className="text-sm text-gray-500">
             Have a topic you'd like us to cover? <a href="/contact" className="text-purple-600 hover:underline font-medium">Send us a suggestion.</a>
