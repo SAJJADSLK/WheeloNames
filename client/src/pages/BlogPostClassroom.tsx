@@ -1,8 +1,10 @@
 import Header from "@/components/Header";
 import { Link } from "wouter";
 import { Calendar, User, ArrowLeft, Clock } from "lucide-react";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
 export default function BlogPostClassroom() {
+  usePageTitle("How to Use Spin Wheels in Classrooms ");
   return (
     <div className="min-h-screen bg-white">
       <Header />
