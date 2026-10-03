@@ -1,8 +1,10 @@
 import Header from "@/components/Header";
 import { Link } from "wouter";
 import { Calendar, User, ArrowLeft, Clock } from "lucide-react";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
 export default function BlogPostWeighted() {
+  usePageTitle("Weighted Spin Wheels Explained ");
   return (
     <div className="min-h-screen bg-white">
       <Header />
