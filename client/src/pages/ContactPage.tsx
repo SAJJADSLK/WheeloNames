@@ -1,8 +1,10 @@
 import Header from "@/components/Header";
 import { useState } from "react";
 import { Mail, Globe, MessageSquare, CheckCircle } from "lucide-react";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
 export default function ContactPage() {
+  usePageTitle("Contact Us ");
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
 
