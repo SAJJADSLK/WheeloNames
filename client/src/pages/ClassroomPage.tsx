@@ -1,7 +1,9 @@
 import { BookOpen, Users, Lightbulb, Download, ExternalLink } from "lucide-react";
 import Header from "@/components/Header";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
 export default function ClassroomPage() {
+  usePageTitle("Classroom Spin Wheel - Random Student Picker for Teachers ");
   const resources = [
     {
       title: "Name Picker for Attendance",
