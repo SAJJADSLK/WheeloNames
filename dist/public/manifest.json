@@ -1,0 +1,97 @@
+{
+  "name": "Wheeloname - Spin Wheel Maker",
+  "short_name": "Wheeloname",
+  "description": "Create custom spin wheels for games, decisions, and classroom activities. Free online wheel spinner with sharing and analytics.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#7c3aed",
+  "background_color": "#ffffff",
+  "categories": ["productivity", "games"],
+  "screenshots": [
+    {
+      "src": "https://d2xsxph8kpxj0f.cloudfront.net/310519663675103243/Keu92i8at8VAdKDhSKgXT4/wheeloname-favicon-2wzufQWDpYBWNPmEntMmYz.webp",
+      "sizes": "192x192",
+      "type": "image/webp",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "https://d2xsxph8kpxj0f.cloudfront.net/310519663675103243/Keu92i8at8VAdKDhSKgXT4/wheeloname-favicon-2wzufQWDpYBWNPmEntMmYz.webp",
+      "sizes": "512x512",
+      "type": "image/webp",
+      "form_factor": "wide"
+    }
+  ],
+  "icons": [
+    {
+      "src": "https://d2xsxph8kpxj0f.cloudfront.net/310519663675103243/Keu92i8at8VAdKDhSKgXT4/wheeloname-favicon-2wzufQWDpYBWNPmEntMmYz.webp",
+      "sizes": "192x192",
+      "type": "image/webp",
+      "purpose": "any"
+    },
+    {
+      "src": "https://d2xsxph8kpxj0f.cloudfront.net/310519663675103243/Keu92i8at8VAdKDhSKgXT4/wheeloname-favicon-2wzufQWDpYBWNPmEntMmYz.webp",
+      "sizes": "512x512",
+      "type": "image/webp",
+      "purpose": "any"
+    },
+    {
+      "src": "https://d2xsxph8kpxj0f.cloudfront.net/310519663675103243/Keu92i8at8VAdKDhSKgXT4/wheeloname-favicon-2wzufQWDpYBWNPmEntMmYz.webp",
+      "sizes": "192x192",
+      "type": "image/webp",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "New Wheel",
+      "short_name": "New Wheel",
+      "description": "Create a new spin wheel",
+      "url": "/wheel/new",
+      "icons": [
+        {
+          "src": "https://d2xsxph8kpxj0f.cloudfront.net/310519663675103243/Keu92i8at8VAdKDhSKgXT4/wheeloname-favicon-2wzufQWDpYBWNPmEntMmYz.webp",
+          "sizes": "192x192",
+          "type": "image/webp"
+        }
+      ]
+    },
+    {
+      "name": "Team Generator",
+      "short_name": "Teams",
+      "description": "Generate random teams",
+      "url": "/team-generator",
+      "icons": [
+        {
+          "src": "https://d2xsxph8kpxj0f.cloudfront.net/310519663675103243/Keu92i8at8VAdKDhSKgXT4/wheeloname-favicon-2wzufQWDpYBWNPmEntMmYz.webp",
+          "sizes": "192x192",
+          "type": "image/webp"
+        }
+      ]
+    },
+    {
+      "name": "Presets",
+      "short_name": "Presets",
+      "description": "Browse preset wheels",
+      "url": "/presets",
+      "icons": [
+        {
+          "src": "https://d2xsxph8kpxj0f.cloudfront.net/310519663675103243/Keu92i8at8VAdKDhSKgXT4/wheeloname-favicon-2wzufQWDpYBWNPmEntMmYz.webp",
+          "sizes": "192x192",
+          "type": "image/webp"
+        }
+      ]
+    }
+  ],
+  "share_target": {
+    "action": "/share",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  }
+}

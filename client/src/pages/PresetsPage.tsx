@@ -85,7 +85,7 @@ export default function PresetsPage() {
 
   const copyPreset = (key: string) => {
     const preset = PRESETS[key as keyof typeof PRESETS];
-    const wheelData = btoa(JSON.stringify({ title: preset.title, entries: preset.entries }));
+    const wheelData = encodeURIComponent(JSON.stringify({ title: preset.title, entries: preset.entries }));
     const shareUrl = `${window.location.origin}/wheel/new?wheel=${wheelData}`;
     navigator.clipboard.writeText(shareUrl);
     setCopied(key);
@@ -95,7 +95,7 @@ export default function PresetsPage() {
 
   const openPreset = (key: string) => {
     const preset = PRESETS[key as keyof typeof PRESETS];
-    const wheelData = btoa(JSON.stringify({ title: preset.title, entries: preset.entries }));
+    const wheelData = encodeURIComponent(JSON.stringify({ title: preset.title, entries: preset.entries }));
     window.location.href = `/wheel/new?wheel=${wheelData}`;
   };
 
